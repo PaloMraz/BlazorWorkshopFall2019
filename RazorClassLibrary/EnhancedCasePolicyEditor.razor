@@ -1,0 +1,19 @@
+<h2>Enhanced CASE Policy Editor</h2>
+
+<CascadingValue Value="this._theme">
+  <ThemedDefaultButton OnClick="@this.ChangeThemeAsync">   
+    <Content>Change Theme!</Content>
+  </ThemedDefaultButton>
+  <CasePolicyEditor></CasePolicyEditor>
+</CascadingValue>
+
+
+@code {
+
+  private Theme _theme = new Theme();
+
+  private async Task ChangeThemeAsync()
+  {
+    await this._theme.ChangeThemeAsync();
+  }
+}

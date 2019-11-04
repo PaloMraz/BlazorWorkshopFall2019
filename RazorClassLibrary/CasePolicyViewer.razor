@@ -2,6 +2,11 @@
 
 
 <h2>CASE Policy Viewer</h2>
+<div>
+  <ThemedDefaultButton>
+    <Content>@($"Themed default button in {this.GetType().Name}")</Content>
+  </ThemedDefaultButton>
+</div>
 
 @if (this.Policy == null)
 {
@@ -26,6 +31,9 @@
 </svg>
 
 @code {
+
+  [CascadingParameter]
+  public Theme Theme { get; set; }
 
   [Parameter]
   public Policy Policy { get; set; } = CreateDefaultPolicy();

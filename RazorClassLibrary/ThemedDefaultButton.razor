@@ -1,0 +1,17 @@
+<button @onclick="this.OnClick.InvokeAsync" class="btn @(this.Theme?.DefaultButtonCssClass)">
+  @this.Content
+</button>
+
+@code {
+
+  [CascadingParameter]
+  public Theme Theme { get; set; }
+
+
+  [Parameter]
+  public RenderFragment Content { get; set; }
+
+
+  [Parameter]
+  public EventCallback OnClick { get; set; }
+}
