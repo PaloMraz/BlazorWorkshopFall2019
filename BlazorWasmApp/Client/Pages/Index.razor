@@ -1,6 +1,14 @@
 @page "/"
 @using RazorClassLibrary
 
-<h1>Hello, world WASM!</h1>
+<h1>@this._message</h1>
 
-<EnhancedCasePolicyEditor></EnhancedCasePolicyEditor>
+<CascadingValue Value='new Theme() { DefaultButtonCssClass = "btn-warning" }'>
+  <JavaScriptPrompt Message="@this._message"></JavaScriptPrompt>
+  <EnhancedCasePolicyEditor></EnhancedCasePolicyEditor>
+</CascadingValue>
+
+
+@code {
+  private string _message = "Hello, world WASM!";
+}

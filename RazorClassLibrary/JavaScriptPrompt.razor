@@ -1,0 +1,26 @@
+@inject Microsoft.JSInterop.IJSRuntime _jsRuntime
+
+<h3>JavaScriptPrompt</h3>
+
+<ThemedDefaultButton OnClick="this.ShowJavaScriptPromptAsync">
+  <Content>Show JavaScript Prompt</Content>
+</ThemedDefaultButton>
+
+<div>Result: @this._promptResult</div>
+
+@code {
+
+  [CascadingParameter]
+  public Theme Theme { get; set; }
+
+
+  [Parameter]
+  public string Message { get; set; }
+
+  private string _promptResult;
+
+  private async Task ShowJavaScriptPromptAsync()
+  {
+    this._promptResult = await this._jsRuntime.InvokeAsync<string>("exampleJsFunctions.showPrompt", new object[] { this.Message });
+  }
+}

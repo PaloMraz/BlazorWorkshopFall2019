@@ -8,7 +8,7 @@ namespace RazorClassLibrary
 {
   public class Theme
   {
-    public string DefaultButtonCssClass { get; private set; } = "btn-success";
+    public string DefaultButtonCssClass { get; set; } = "btn-success";
 
 
     public async Task ChangeThemeAsync()
