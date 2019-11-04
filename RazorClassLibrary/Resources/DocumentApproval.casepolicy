@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<policy key="doc" currentState="New" xmlns="http://www.bsp.sk/apps/schemas/case/2013">
+
+  <!-- Defined document-specific roles -->
+
+  <role key="Author" name="Author role" description="Author role description" />
+  <role key="Reviewer" />
+
+  <!-- Defined document states -->
+
+  <state key="New" />
+  <state key="Authoring" />
+  <state key="Sent" />
+  <state key="Reviewing" />
+  <state key="Accepted" />
+  <state key="Rejected" />
+  <state key="Deleted" />
+
+  <!-- Defined operations -->
+
+  <operation key="Update" />
+  <operation key="Send" />
+  <operation key="Review" />
+  <operation key="Accept" />
+  <operation key="Reject" />
+  <operation key="Delete" />
+
+  <!-- Defined properties -->
+
+  <property key="Title" />
+  <property key="Content" />
+
+  <!-- Operation authorization rules for the Author role -->
+
+  <operationRule operation="Update" role="Author" state="New" targetState="Authoring" />
+  <operationRule operation="Update" role="Author" state="Authoring" targetState="Authoring" />
+  <operationRule operation="Send" role="Author" state="Authoring" targetState="Sent" />
+  <operationRule operation="Delete" role="Author" state="Rejected" targetState="Deleted" />
+  <operationRule operation="Delete" role="Author" state="Accepted" targetState="Deleted" />
+
+  <!-- Operation authorization rules for the Reviewer role -->
+
+  <operationRule operation="Review" role="Reviewer" state="Sent" targetState="Reviewing" />
+  <operationRule operation="Accept" role="Reviewer" state="Reviewing" targetState="Accepted"  />
+  <operationRule operation="Reject" role="Reviewer" state="Reviewing" targetState="Rejected" isEnabled="true" />
+
+  <!-- Property authorization rules (only Author can modify document properties) -->
+
+  <propertyRule property="Title" role="Author" state="New" />
+  <propertyRule property="Content" role="Author" state="New" />
+
+  <propertyRule property="Content" role="Author" state="Authoring" />
+  <propertyRule property="Title" role="Author" state="Authoring" />
+
+</policy>

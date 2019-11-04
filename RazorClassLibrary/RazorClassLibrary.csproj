@@ -5,6 +5,16 @@
     <RazorLangVersion>3.0</RazorLangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\DocumentApproval.casepolicy" />
+    <None Remove="Resources\SslpPolicy.casepolicy" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DocumentApproval.casepolicy" />
+    <EmbeddedResource Include="Resources\SslpPolicy.casepolicy" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />

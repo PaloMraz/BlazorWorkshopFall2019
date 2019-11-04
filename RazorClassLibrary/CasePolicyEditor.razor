@@ -1,0 +1,50 @@
+@using Bsp.Case
+
+<h2>
+  CASE Policy Editor
+</h2>
+
+
+<pre>
+<textarea @bind="this._policyXml" @oninput="this.PolicyXmlChangedAsync" rows="10" cols="80"></textarea>
+</pre>
+<div>
+  <span class="alert-danger">@_errorMessage</span>
+</div>
+<div>
+  <CasePolicyViewer @bind-Policy="this._currentPolicy"></CasePolicyViewer>
+</div>
+
+
+@code {
+
+  private string _policyXml;
+  private Policy _currentPolicy;
+  private string _errorMessage;
+
+  protected override Task OnInitializedAsync()
+  {
+    this._currentPolicy = Policy.LoadResource("RazorClassLibrary.Resources.DocumentApproval.casepolicy", this.GetType().Assembly);
+    this._policyXml = this._currentPolicy.GetXml();
+
+    return Task.CompletedTask;
+  }
+
+
+  private async Task PolicyXmlChangedAsync(ChangeEventArgs e)
+  {
+    await Task.Yield();
+
+    try
+    {
+      this._errorMessage = "";
+      string xml = e.Value.ToString();
+      Policy updatedPolicy = Policy.ParseXml(xml);
+      this._currentPolicy = updatedPolicy;
+    }
+    catch (Exception ex)
+    {
+      this._errorMessage = ex.GetBaseException().Message;
+    }
+  }
+}

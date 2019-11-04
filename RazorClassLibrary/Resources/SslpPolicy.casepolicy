@@ -1,0 +1,1612 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<policy key="SslpPolicy" name="Application Policy" xmlns="http://www.lamarvin.com/schemas/case/2010/04">
+  <!--Roles-->
+  <role key="Administrator" />
+  <role key="Sslp.Admin" />
+  <role key="Sslp.User" />
+  
+  <role key="Sslp.FilingRoomWorker" name="Pracovník podateľne" /> <!--PracPodatelne-->
+  <role key="Sslp.LegislativeDepartmentDirector" name="Riaditeľ legislatívneho odboru" /> <!--RiaditelLO-->
+  <role key="Sslp.ChairmanSecretaryWorker" name="Pracovník sekretariátu predsedu" /> <!--Cechvalova-->
+  <role key="Sslp.AdministrativeDepartmentWorker" name="Pracovník organizačného odboru" /> <!--OO-->
+  <role key="Sslp.LegislativeDepartmentReferee" name="Referent legislatívneho odboru" /> <!--ReferentLO-->
+  <role key="Sslp.CommitteeUser" name="Používateľ na výbore" /> <!--UPV-->
+  <role key="Sslp.SupervisionCommitteeUser" name="Používateľ na gestorskom výbore" /> <!--GV-->
+  <role key="Sslp.DocumentsLinker" name="Linkovač dokumentov" /> <!--Rola pre možnosť pridať užívateľa do roli, ktorá mu zabezpečí prístup k linkovaniu dokumentov-->
+
+  <role key="NRCPT.Admin" />
+  <role key="NRCPT.User" />
+
+  <role key="NRUz.Admin" description="Správca modulu Evidencia uznesení" />
+  <role key="NRRoz.Admin" description="Správca modulu Evidencia rozhodnutí" />
+  <role key="NRESLO.Admin" description="Správca modulu Evidencia stanovísk LO" />
+  <role key="NRESZ.Admin" description="Správca modulu Evidencia schválených zákonov" />
+  <role key="CommitteeAgenda.Admin" name="Správca schôdzí výborov" />
+
+  <role key="NREVyb.CommitteeUser" name="Používateľ na výbore" />
+
+  <!--States-->
+  <state key="New" name="Nový proces" imageUri="New" />
+  <state key="Podatelna" name="Evidencia NZ" imageUri="Podatelna" />
+  <state key="VyberPoradcu" name="Výber poradcov" imageUri="VyberPoradcu" />
+  <state key="SekPredsedu" name="Rozhodnutie predsedu NR SR" imageUri="SekPredsedu" />
+  <state key="ICitanie" name="I. čítanie" imageUri="ICitanie" />
+  <state key="InfoReferent" name="Stanovisko LO k NZ" imageUri="InfoReferent" />
+  <state key="Vybor" name="Rokovanie výboru" imageUri="Vybor" />
+  <state key="GestorskyVybor" name="Rokovanie gestorského výboru" imageUri="GestorskyVybor" />
+  <state key="IICitanie" name="II. čítanie" imageUri="IICitanie" />
+  <state key="IIICitanie" name="III. čítanie" imageUri="IIICitanie" />
+  <state key="Meeting" name="Rokovanie NR SR" imageUri="Meeting" />
+  <state key="Redakcia" name="Redakcia" imageUri="Redakcia" />
+  <state key="Closed" name="Ukončený proces" imageUri="Closed" />
+
+  <!--Operations-->
+  <operation key="Browse" name="Prezeranie zoznamu" showInUI="false" />
+  <operation key="Add" showInUI="false" />
+  <operation key="Update" name="Uložiť proces" showInUI="true" />
+  <operation key="Delete" name="Odstrániť proces" showInUI="true" imageUri="delete_16x16" />
+
+  <operation key="AddDocument" name="Pridanie dokumentu" showInUI="false" />
+  <operation key="DeleteDocument" name="Odstránenie dokumentu" showInUI="false" />
+  <operation key="UpdateDocument" name="Aktualizácia dokumentu" showInUI="false" />
+  <operation key="AddDocumentLink.All" name="Pridanie linku na dokument z ktoréhokoľvek modulu" showInUI="false" />
+  <operation key="AddDocumentLink.NRUz" name="Pridanie linku na dokument z modulu Evidencia uznesení" showInUI="false" />
+  <operation key="AddDocumentLink.NRRoz" name="Pridanie linku na dokument z modulu Evidencia rozhodnutí" showInUI="false" />
+  <operation key="AddDocumentLink.NRESLO" name="Pridanie linku na dokument z modulu Evidencia stanovísk LO" showInUI="false" />
+  <operation key="AddDocumentLink.NRESZ" name="Pridanie linku na dokument z modulu Evidencia schválených zákonov" showInUI="false" />
+  <operation key="AddDocumentLink.CommitteeAgenda" name="Pridanie linku na dokument z modulu Agenda výborov" showInUI="false" />
+
+  <operation key="ForwardToVyberPoradcu" name="Postúpiť riaditeľovi LO K NR SR" showInUI="true" imageUri="right_16x16" />
+  <operation key="TakeBack" name="Navrhovateľ vzal NZ späť" showInUI="true" imageUri="level_down_16x16" />
+
+  <operation key="ForwardToSekPredsedu" name="Postúpiť predsedovi NR SR" showInUI="true" imageUri="right_16x16" />
+
+  <operation key="ForwardToICitanie" name="Postúpiť na I. čítanie" showInUI="true" imageUri="right_16x16" />
+  <operation key="StopRemake" name="Zastaviť opätovne prerokovávaný zákon" showInUI="true" imageUri="level_down_16x16" />
+  <operation key="BackToNavrhovatel" name="Vrátiť navrhovateľovi" showInUI="true" imageUri="level_down_16x16" />
+
+  <operation key="ForwardToLO" name="Postúpiť na LO" showInUI="true" imageUri="right_16x16" />
+  <operation key="TakeBackBefore" name="Vziať NZ späť pred schôdzou" showInUI="true" imageUri="level_down_16x16" />
+  <operation key="TakeBackAfter" name="Vziať NZ späť na schôdzi" showInUI="true" imageUri="level_down_16x16" />
+  <operation key="Stop" name="Nepokračovať" showInUI="true" imageUri="level_down_16x16" />
+
+  <operation key="ForwardToVybory" name="Postúpiť výborom" showInUI="true" imageUri="right_16x16" />
+
+  <operation key="ForwardToGV" name="Postúpiť gestorskému výboru a na plénum" showInUI="true" imageUri="right_16x16" />
+  <operation key="HoldVybor" name="Opätovné sedenie výboru" showInUI="true" imageUri="undo1_16x16" />
+
+  <operation key="ForwardToIICitanie" name="Postúpiť na II. čítanie" showInUI="true" imageUri="right_16x16" />
+
+  <operation key="ForwardToIIICitanie" name="Postúpiť na III. čítanie" showInUI="true" imageUri="right_16x16" />
+  <operation key="BackToGV" name="Vrátiť do gestorského výboru" showInUI="true" imageUri="left_16x16" />
+  <operation key="Hold" name="Odložiť NZ" showInUI="true" imageUri="level_up_16x16" />
+
+  <operation key="ForwardToRedakcia" name="Postúpiť do redakcie" showInUI="true" imageUri="right_16x16" />
+  <operation key="BackToIICitanie" name="Vrátiť do II. čítania" showInUI="true" imageUri="left_16x16" />
+  <operation key="BackVybory" name="Vrátiť výborom" showInUI="true" imageUri="left_16x16" />
+  <operation key="NotApproved" name="NZ nebol schválený" showInUI="true" imageUri="level_down_16x16" />
+
+  <operation key="ForwardClosed" name="Postúpiť (zákon vyšiel v Z.z.)" showInUI="true" imageUri="right_16x16" />
+  <operation key="BackPrezidentom" name="Zákon vrátený prezidentom" showInUI="true" imageUri="level_down_16x16" />
+
+  <operation key="ReceiveNotificationEmails" name="Obdržanie notifikačného mailu o prechode procesu do ďalšieho stavu" showInUI="false" />
+
+
+  <!--Operation authorization rules-->
+  <operationRule operation="Browse" role="Administrator" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.Admin" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.User" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.FilingRoomWorker" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.LegislativeDepartmentDirector" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.ChairmanSecretaryWorker" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.AdministrativeDepartmentWorker" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.LegislativeDepartmentReferee" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.CommitteeUser" state="New" targetState="New" />
+  <operationRule operation="Browse" role="Sslp.SupervisionCommitteeUser" state="New" targetState="New" />
+  <operationRule operation="Browse" role="NREVyb.CommitteeUser" state="New" targetState="New" />
+
+
+  <operationRule operation="Add" role="Administrator" state="New" targetState="New" />
+  <operationRule operation="Add" role="Sslp.Admin" state="New" targetState="New" />
+  <operationRule operation="Add" role="Sslp.FilingRoomWorker" state="New" targetState="New" />
+
+
+  <operationRule operation="Delete" role="Administrator" state="New" targetState="New" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="New" targetState="New" />
+  <operationRule operation="Delete" role="Sslp.FilingRoomWorker" state="New" targetState="New" />
+
+  <operationRule operation="Delete" role="Administrator" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="Delete" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Podatelna" />
+
+  <operationRule operation="Delete" role="Administrator" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="Delete" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="VyberPoradcu" />
+
+  <operationRule operation="Delete" role="Administrator" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="Delete" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="SekPredsedu" />
+
+  <operationRule operation="Delete" role="Administrator" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="Delete" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="ICitanie" />
+
+  <operationRule operation="Delete" role="Administrator" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Delete" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Delete" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="InfoReferent" />
+
+  <operationRule operation="Delete" role="Administrator" state="Vybor" targetState="Vybor" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="Delete" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+  <operationRule operation="Delete" role="Administrator" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="Delete" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="GestorskyVybor" />
+
+  <operationRule operation="Delete" role="Administrator" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="Delete" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+
+  <operationRule operation="Delete" role="Administrator" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="Delete" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IIICitanie" />
+
+  <operationRule operation="Delete" role="Administrator" state="Meeting" targetState="Meeting" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="Delete" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Meeting" />
+
+  <operationRule operation="Delete" role="Administrator" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Delete" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Delete" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Redakcia" />
+
+  <operationRule operation="Delete" role="Administrator" state="Closed" targetState="Closed" />
+  <operationRule operation="Delete" role="Sslp.Admin" state="Closed" targetState="Closed" />
+
+
+  <operationRule operation="Update" role="Administrator" state="New" targetState="Podatelna" />
+  <operationRule operation="Update" role="Sslp.Admin" state="New" targetState="Podatelna" />
+  <operationRule operation="Update" role="Sslp.FilingRoomWorker" state="New" targetState="Podatelna" />
+
+  <operationRule operation="Update" role="Administrator" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="Update" role="Sslp.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="Update" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Podatelna" />
+
+  <operationRule operation="Update" role="Administrator" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="Update" role="Sslp.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="VyberPoradcu" />
+
+  <operationRule operation="Update" role="Administrator" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="Update" role="Sslp.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="Update" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="SekPredsedu" />
+
+  <operationRule operation="Update" role="Administrator" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="Update" role="Sslp.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="Update" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="ICitanie" />
+
+  <operationRule operation="Update" role="Administrator" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Update" role="Sslp.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="Update" role="NRESLO.Admin" state="InfoReferent" targetState="InfoReferent" />
+
+  <operationRule operation="Update" role="Administrator" state="Vybor" targetState="Vybor" />
+  <operationRule operation="Update" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="Update" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+  <operationRule operation="Update" role="Administrator" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="Update" role="Sslp.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="Update" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="GestorskyVybor" />
+
+  <operationRule operation="Update" role="Administrator" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="Update" role="Sslp.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="Update" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+
+  <operationRule operation="Update" role="Administrator" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="Update" role="Sslp.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="Update" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IIICitanie" />
+
+  <operationRule operation="Update" role="Administrator" state="Meeting" targetState="Meeting" />
+  <operationRule operation="Update" role="Sslp.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="Update" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Meeting" />
+
+  <operationRule operation="Update" role="Administrator" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Update" role="Sslp.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="Update" role="NRESZ.Admin" state="Redakcia" targetState="Redakcia" />
+
+  <operationRule operation="Update" role="Administrator" state="Closed" targetState="Closed" />
+  <operationRule operation="Update" role="Sslp.Admin" state="Closed" targetState="Closed" />
+
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentDirector" state="Closed" targetState="Closed" />
+  <operationRule operation="Update" role="Sslp.LegislativeDepartmentReferee" state="Closed" targetState="Closed" />
+
+
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Meeting" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="ReceiveNotificationEmails" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Redakcia" />
+
+
+  <!--Properties-->
+  <property key="Id" />
+  <property key="StateId" />
+  <property key="DateCreated" />
+  <property key="DateModified" />
+  <property key="Name" />
+  <property key="Cpt" />
+  <property key="CptDate" />
+  <property key="DeliveryDate" />
+  <property key="ProposerType" />
+  <property key="ProposedDeadlineCom" />
+  <property key="ProposedDeadlineSupervisionCom" />
+  <property key="DeadlineCom" />
+  <property key="DeadlineSupervisionCom" />
+  <property key="NameFinal" />
+  <property key="Deadline" />
+  <property key="Result" />
+  <property key="Description" />
+  <property key="ConsultantPersonKey" />
+  <property key="ConsultantEUPersonKey" />
+  <property key="MeetingNr" />
+  <property key="TermNr" />
+  <property key="ResolutionDate" />
+  <property key="ResolutionNumber" />
+  <property key="SendOffDate" />
+  <property key="CodePart" />
+  <property key="CodeNumber" />
+  <property key="CodeDate" />
+  <property key="Effectiveness" />
+  <property key="ApprovingOpinion" />
+  <property key="OpinionSent" />
+  <property key="NegotiationDate" />
+  <property key="DistributionDate" />
+  <property key="Slk" />
+  <property key="SlkResolutionDate" />
+  <property key="SlkResolutionNumber" />
+  <property key="StateOriginal" />
+  <property key="LawProposalCategory" />
+  <property key="IsSentBackToProposer" />
+  <property key="IsStopped" />
+  <property key="CptPrevious" />
+  <property key="IsApprovedWithPresidentAmendments" />
+  <property key="IsApprovedWithoutPresidentAmendments" />
+  <property key="IsNotApproved" />
+  <property key="IsInternationalTreatyApproved" />
+  <property key="IsNotInternationalTreatyApproved" />
+  <property key="IsLawProposalApproved" />
+  <property key="IsSentBackByPresident" />
+  <property key="IsTakenBack" />
+  <property key="LegislatureId" />
+  <property key="ProposedSupervisionCommitteeDepartmentKey" />
+  <property key="SupervisionCommitteeDepartmentKey" />
+  <property key="CommitteeDepartmentKey" />
+  <property key="IsClaimed" />
+  <property key="ProposedDeadlineComAsap" />
+  <property key="ProposedDeadlineSupervisionComAsap" />
+  <property key="DeadlineComAsap" />
+  <property key="DeadlineSupervisionComAsap" />
+  <property key="ProposedDeadlineComSetBySC" />
+  <property key="ProposedDeadlineSupervisionComSetBySC" />
+  <property key="DeadlineComSetBySC" />
+  <property key="DeadlineSupervisionComSetBySC" />
+  <property key="MasterId" />
+  <property key="UserKey" />
+  <property key="Ordinal" />
+  <property key="Proposers" />
+  <property key="ProposedCommittees" />
+  <property key="ProposedAmendments" />
+  <property key="Committees" />
+  <property key="EmailNotify" />
+  <property key="ProcessPathName" />
+
+
+  <!--Property Groups-->
+  <propertyGroup key="Init" name="Inicializačné atribúty" >
+    <property key="Id" />
+    <property key="DateCreated" />
+    <property key="MasterId" />
+    <property key="UserKey" />
+    <property key="Ordinal" />
+  </propertyGroup>
+  
+  <propertyGroup key="General" name="Všeobecné atribúty" >
+    <property key="StateId" />
+    <property key="DateModified" />
+    <property key="Description" />
+    <property key="StateOriginal" />
+    <property key="IsSentBackToProposer" />
+    <property key="IsStopped" />
+    <property key="IsLawProposalApproved" />
+    <property key="IsSentBackByPresident" />
+    <property key="IsTakenBack" />
+    <property key="EmailNotify" />
+    <property key="ProcessPathName" />
+  </propertyGroup>
+
+  <propertyGroup key="Podatelna" name="Evidencia NZ" >
+    <property key="LegislatureId" />
+    <property key="TermNr" />
+    <property key="Cpt" />
+    <property key="Name" />
+    <property key="CptDate" />
+    <property key="DeliveryDate" />
+    <property key="ProposerType" />
+    <property key="CptPrevious" />
+    <property key="LawProposalCategory" />
+    <property key="IsClaimed" />
+    <property key="Result" />
+    <property key="Proposers" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="VyberPoradcu" name="Výber poradcov" >
+    <property key="ConsultantPersonKey" />
+    <property key="ConsultantEUPersonKey" />
+    <property key="Deadline" />
+    <property key="Result" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+    <property key="ProposedCommittees" />
+    <property key="ProposedSupervisionCommitteeDepartmentKey" />
+  </propertyGroup>
+
+  <propertyGroup key="SekPredsedu" name="Rozhodnutie predsedu NR SR" >
+    <property key="ProposedDeadlineCom" />
+    <property key="ProposedDeadlineSupervisionCom" />
+    <property key="ProposedDeadlineComAsap" />
+    <property key="ProposedDeadlineSupervisionComAsap" />
+    <property key="ProposedDeadlineComSetBySC" />
+    <property key="ProposedDeadlineSupervisionComSetBySC" />
+    <property key="ProposedSupervisionCommitteeDepartmentKey" />
+    <property key="DistributionDate" />
+    <property key="Result" />
+    <property key="ProposedCommittees" />
+    <property key="Committees" />
+    <property key="IsSentBackToProposer" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="ICitanie" name="I. čítanie" >
+    <property key="MeetingNr" />
+    <property key="ResolutionDate" />
+    <property key="ResolutionNumber" />
+    <property key="Slk" />
+    <property key="SlkResolutionDate" />
+    <property key="SlkResolutionNumber" />
+    <property key="DeadlineCom" />
+    <property key="DeadlineSupervisionCom" />
+    <property key="DeadlineComAsap" />
+    <property key="DeadlineSupervisionComAsap" />
+    <property key="DeadlineComSetBySC" />
+    <property key="DeadlineSupervisionComSetBySC" />
+    <property key="SupervisionCommitteeDepartmentKey" />
+    <property key="Result" />
+    <property key="Committees" />
+    <property key="IsSentBackToProposer" />
+    <property key="IsStopped" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="InfoReferent" name="Stanovisko LO k NZ" >
+    <property key="CommitteeDepartmentKey" />
+    <property key="ProposedAmendments" />
+    <property key="IsTakenBack" />
+    <property key="Result" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="Vybor" name="Rokovanie výboru" >
+    <property key="NegotiationDate" />
+    <property key="CommitteeDepartmentKey" />
+    <property key="ProposedAmendments" />
+    <property key="IsTakenBack" />
+    <property key="Result" />
+    <property key="StateOriginal" />
+    <property key="ProcessPathName" />
+  </propertyGroup>
+
+  <propertyGroup key="GestorskyVybor" name="Rokovanie gestorského výboru" >
+    <property key="NegotiationDate" />
+    <property key="ProposedAmendments" />
+    <property key="Result" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="IICitanie" name="II. čítanie" >
+    <property key="MeetingNr" />
+    <property key="ResolutionDate" />
+    <property key="ResolutionNumber" />
+    <property key="ApprovingOpinion" />
+    <property key="OpinionSent" />
+    <property key="Result" />
+    <property key="IsSentBackToProposer" />
+    <property key="IsStopped" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="IIICitanie" name="III. čítanie" >
+    <property key="MeetingNr" />
+    <property key="ResolutionDate" />
+    <property key="ResolutionNumber" />
+    <property key="Result" />
+    <property key="IsApprovedWithPresidentAmendments" />
+    <property key="IsApprovedWithoutPresidentAmendments" />
+    <property key="IsNotApproved" />
+    <property key="IsInternationalTreatyApproved" />
+    <property key="IsNotInternationalTreatyApproved" />
+    <property key="IsSentBackToProposer" />
+    <property key="IsTakenBack" />
+    <property key="IsLawProposalApproved" />
+    <property key="StateOriginal" />
+  </propertyGroup>
+
+  <propertyGroup key="Meeting" name="Rokovanie NR SR" >
+    <property key="MeetingNr" />
+    <property key="ResolutionDate" />
+    <property key="ResolutionNumber" />
+    <property key="Result" />
+    <property key="IsSentBackToProposer" />
+    <property key="IsTakenBack" />
+    <property key="StateOriginal" />
+    <property key="IsLawProposalApproved" />
+  </propertyGroup>
+
+  <propertyGroup key="Redakcia" name="Redakcia" >
+    <property key="NameFinal" />
+    <property key="SendOffDate" />
+    <property key="CodePart" />
+    <property key="CodeNumber" />
+    <property key="CodeDate" />
+    <property key="Effectiveness" />
+    <property key="Result" />
+    <property key="IsSentBackByPresident" />
+    <property key="StateOriginal" />
+    <property key="IsLawProposalApproved" />
+  </propertyGroup>
+
+  <!--Property group authorization rules-->
+  <propertyGroupRule propertyGroup="Init" role="Administrator" state="New"/>
+  <propertyGroupRule propertyGroup="Init" role="Sslp.Admin" state="New"/>
+  <propertyGroupRule propertyGroup="Init" role="Sslp.FilingRoomWorker" state="New"/>
+
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="New"/>
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="New"/>
+  <propertyGroupRule propertyGroup="General" role="Sslp.FilingRoomWorker" state="New"/>
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="Podatelna"/>
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="Podatelna"/>
+  <propertyGroupRule propertyGroup="General" role="Sslp.FilingRoomWorker" state="Podatelna"/>
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="VyberPoradcu" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="VyberPoradcu" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="SekPredsedu" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="SekPredsedu" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="ICitanie" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="ICitanie" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="General" role="NRESLO.Admin" state="InfoReferent" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="Vybor" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.CommitteeUser" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="IICitanie" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="Meeting" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="Meeting" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="Redakcia" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" />
+  <propertyGroupRule propertyGroup="General" role="NRESZ.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="General" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="General" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="New"/>
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="New"/>
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.FilingRoomWorker" state="New"/>
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="Podatelna"/>
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="Podatelna"/>
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.FilingRoomWorker" state="Podatelna"/>
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="VyberPoradcu" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="VyberPoradcu" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="SekPredsedu" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="SekPredsedu" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="ICitanie" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="ICitanie" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="InfoReferent" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="Podatelna" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="Podatelna" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="VyberPoradcu" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="VyberPoradcu" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="SekPredsedu" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="SekPredsedu" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="ICitanie" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="ICitanie" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="InfoReferent" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="VyberPoradcu" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="SekPredsedu" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="SekPredsedu" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="ICitanie" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="ICitanie" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="InfoReferent" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="SekPredsedu" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="ICitanie" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="ICitanie" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="InfoReferent" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="ICitanie" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="ICitanie" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="NRESLO.Admin" state="InfoReferent" />
+  
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="InfoReferent" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="InfoReferent" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="Vybor" role="Administrator" state="Vybor" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.Admin" state="Vybor" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.CommitteeUser" state="Vybor" />
+
+  <propertyGroupRule propertyGroup="Vybor" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.Admin" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="Vybor" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="Vybor" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="Vybor" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="Vybor" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="Vybor" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Administrator" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Sslp.Admin" state="GestorskyVybor" />
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" />
+
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Sslp.Admin" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Sslp.Admin" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="GestorskyVybor" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="IICitanie" role="Administrator" state="IICitanie" />
+  <propertyGroupRule propertyGroup="IICitanie" role="Sslp.Admin" state="IICitanie" />
+  <propertyGroupRule propertyGroup="IICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" />
+
+  <propertyGroupRule propertyGroup="IICitanie" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="IICitanie" role="Sslp.Admin" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="IICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="IICitanie" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="IICitanie" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="IICitanie" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="IICitanie" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="IIICitanie" role="Administrator" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="IIICitanie" role="Sslp.Admin" state="IIICitanie" />
+  <propertyGroupRule propertyGroup="IIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" />
+
+  <propertyGroupRule propertyGroup="IIICitanie" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="IIICitanie" role="Sslp.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="IIICitanie" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="IIICitanie" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="Meeting" role="Administrator" state="Meeting" />
+  <propertyGroupRule propertyGroup="Meeting" role="Sslp.Admin" state="Meeting" />
+  <propertyGroupRule propertyGroup="Meeting" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" />
+
+  <propertyGroupRule propertyGroup="Meeting" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="Meeting" role="Sslp.Admin" state="Closed" />
+
+
+  <propertyGroupRule propertyGroup="Redakcia" role="Administrator" state="Redakcia" />
+  <propertyGroupRule propertyGroup="Redakcia" role="Sslp.Admin" state="Redakcia" />
+  <propertyGroupRule propertyGroup="Redakcia" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" />
+  <propertyGroupRule propertyGroup="Redakcia" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" />
+  <propertyGroupRule propertyGroup="Redakcia" role="NRESZ.Admin" state="Redakcia" />
+
+  <propertyGroupRule propertyGroup="Redakcia" role="Administrator" state="Closed" />
+  <propertyGroupRule propertyGroup="Redakcia" role="Sslp.Admin" state="Closed" />
+  <propertyGroupRule propertyGroup="Redakcia" role="Sslp.LegislativeDepartmentDirector" state="Closed" />
+  <propertyGroupRule propertyGroup="Redakcia" role="Sslp.LegislativeDepartmentReferee" state="Closed" />
+
+
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, NRCPT.Admin, Sslp.FilingRoomWorker" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.LegislativeDepartmentDirector, Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Meeting" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.LegislativeDepartmentDirector, Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="AddDocumentLink.All" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker" state="Closed" targetState="Closed" />
+
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="AddDocumentLink.NRUz" role="NRUz.Admin" state="Closed" targetState="Closed" />
+
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="AddDocumentLink.NRRoz" role="NRRoz.Admin" state="Closed" targetState="Closed" />
+
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="AddDocumentLink.NRESLO" role="NRESLO.Admin" state="Closed" targetState="Closed" />
+
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="AddDocumentLink.NRESZ" role="NRESZ.Admin" state="Closed" targetState="Closed" />
+  
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="Vybor" targetState="Vybor" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="Meeting" targetState="Meeting" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="AddDocumentLink.CommitteeAgenda" role="CommitteeAgenda.Admin" state="Closed" targetState="Closed" />
+
+
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, NRCPT.Admin, Sslp.FilingRoomWorker" state="Podatelna" targetState="Podatelna" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="VyberPoradcu" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="SekPredsedu" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="ICitanie" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.LegislativeDepartmentDirector, Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="InfoReferent" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="GestorskyVybor" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IIICitanie" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker, Sslp.LegislativeDepartmentDirector, Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Redakcia" />
+  <operationRule operation="DeleteDocument" roles="Administrator, Sslp.Admin, Sslp.DocumentsLinker" state="Closed" targetState="Closed" />
+  
+  
+  <!--Subpolicy: Standard-->
+  <policy key="Standard" name="Standard Law Process">
+
+    <operationRule operation="ForwardToVyberPoradcu" role="Administrator" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.Admin" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="VyberPoradcu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToSekPredsedu" role="Administrator" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.Admin" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="SekPredsedu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="VyberPoradcu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="VyberPoradcu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToICitanie" role="Administrator" state="SekPredsedu" targetState="ICitanie" />
+    <operationRule operation="ForwardToICitanie" role="Sslp.Admin" state="SekPredsedu" targetState="ICitanie" />
+    <operationRule operation="ForwardToICitanie" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="ICitanie" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="StopRemake" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToLO" role="Administrator" state="ICitanie" targetState="InfoReferent" />
+    <operationRule operation="ForwardToLO" role="Sslp.Admin" state="ICitanie" targetState="InfoReferent" />
+    <operationRule operation="ForwardToLO" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="InfoReferent" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+    <operationRule operation="Stop" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToVybory" role="Administrator" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.Admin" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="NRESLO.Admin" state="InfoReferent" targetState="Vybor" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="InfoReferent" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="InfoReferent" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToGV" role="Administrator" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.Admin" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.CommitteeUser" state="Vybor" targetState="GestorskyVybor" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+    <operationRule operation="HoldVybor" role="Administrator" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+
+    <operationRule operation="ForwardToIICitanie" role="Administrator" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.Admin" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="IICitanie" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToIIICitanie" role="Administrator" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.Admin" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IIICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="Hold" role="Administrator" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.Admin" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="Stop" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToRedakcia" role="Administrator" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.Admin" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Redakcia" />
+
+    <operationRule operation="BackToIICitanie" role="Administrator" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.Admin" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="BackVybory" role="Administrator" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.Admin" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Vybor" />
+
+    <operationRule operation="NotApproved" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    
+    <operationRule operation="ForwardClosed" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="NRESZ.Admin" state="Redakcia" targetState="Closed" />
+
+    <operationRule operation="BackPrezidentom" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+
+  </policy>
+
+  
+  <!--Subpolicy: InternationalTreaty-->
+  <policy key="InternationalTreaty" name="International Treaty">
+
+    <operationRule operation="ForwardToSekPredsedu" role="Administrator" state="Podatelna" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.Admin" state="Podatelna" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="SekPredsedu" />
+
+
+    <operationRule operation="ForwardToVybory" role="Administrator" state="SekPredsedu" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.Admin" state="SekPredsedu" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Vybor" />
+
+
+    <operationRule operation="ForwardToGV" role="Administrator" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.Admin" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.CommitteeUser" state="Vybor" targetState="GestorskyVybor" />
+
+    <operationRule operation="HoldVybor" role="Administrator" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+    
+    <operationRule operation="ForwardToIICitanie" role="Administrator" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.Admin" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="IICitanie" />
+
+
+    <operationRule operation="ForwardToIIICitanie" role="Administrator" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.Admin" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IIICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="Stop" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToRedakcia" role="Administrator" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.Admin" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Redakcia" />
+
+    <operationRule operation="BackToIICitanie" role="Administrator" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.Admin" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="BackVybory" role="Administrator" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.Admin" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Vybor" />
+
+    <operationRule operation="NotApproved" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardClosed" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="NRESZ.Admin" state="Redakcia" targetState="Closed" />
+
+    <operationRule operation="BackPrezidentom" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+
+  </policy>
+
+
+  <!--Subpolicy: Budget-->
+  <policy key="Budget" name="Budget negotiation">
+
+    <operationRule operation="ForwardToVyberPoradcu" role="Administrator" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.Admin" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="VyberPoradcu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToSekPredsedu" role="Administrator" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.Admin" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="SekPredsedu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="VyberPoradcu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="VyberPoradcu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToLO" role="Administrator" state="SekPredsedu" targetState="InfoReferent" />
+    <operationRule operation="ForwardToLO" role="Sslp.Admin" state="SekPredsedu" targetState="InfoReferent" />
+    <operationRule operation="ForwardToLO" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="InfoReferent" />
+    
+    <operationRule operation="TakeBack" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="StopRemake" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToVybory" role="Administrator" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.Admin" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="NRESLO.Admin" state="InfoReferent" targetState="Vybor" />
+    
+    <operationRule operation="TakeBack" role="Administrator" state="InfoReferent" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="InfoReferent" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentDirector" state="InfoReferent" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentReferee" state="InfoReferent" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToGV" role="Administrator" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.Admin" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.CommitteeUser" state="Vybor" targetState="GestorskyVybor" />
+
+    <operationRule operation="HoldVybor" role="Administrator" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToIICitanie" role="Administrator" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.Admin" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="IICitanie" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToIIICitanie" role="Administrator" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.Admin" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IIICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="Hold" role="Administrator" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.Admin" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="Stop" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToRedakcia" role="Administrator" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.Admin" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Redakcia" />
+
+    <operationRule operation="BackToIICitanie" role="Administrator" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.Admin" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="BackVybory" role="Administrator" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.Admin" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Vybor" />
+
+    <operationRule operation="NotApproved" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardClosed" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="NRESZ.Admin" state="Redakcia" targetState="Closed" />
+
+    <operationRule operation="BackPrezidentom" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+
+  </policy>
+
+
+  <!--Subpolicy: SentBackByPresident-->
+  <policy key="SentBackByPresident" name="Law Proposal Sent Back By President">
+
+    <operationRule operation="ForwardToVyberPoradcu" role="Administrator" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.Admin" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="VyberPoradcu" />
+
+    <operationRule operation="ForwardToSekPredsedu" role="Administrator" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.Admin" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="SekPredsedu" />
+
+    <operationRule operation="ForwardToVybory" role="Administrator" state="SekPredsedu" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.Admin" state="SekPredsedu" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Vybor" />
+
+    <operationRule operation="StopRemake" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="ForwardToGV" role="Administrator" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.Admin" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.CommitteeUser" state="Vybor" targetState="GestorskyVybor" />
+
+    <operationRule operation="HoldVybor" role="Administrator" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+    <operationRule operation="ForwardToIICitanie" role="Administrator" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.Admin" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="IICitanie" />
+
+    <operationRule operation="ForwardToIIICitanie" role="Administrator" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.Admin" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IIICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="Hold" role="Administrator" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.Admin" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+
+    <operationRule operation="Stop" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToRedakcia" role="Administrator" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.Admin" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Redakcia" />
+
+    <operationRule operation="BackToIICitanie" role="Administrator" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.Admin" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="BackVybory" role="Administrator" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.Admin" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Vybor" />
+
+    <operationRule operation="NotApproved" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="ForwardClosed" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="NRESZ.Admin" state="Redakcia" targetState="Closed" />
+
+  </policy>
+
+
+
+  <!--Subpolicy: SLK-->
+  <policy key="SLK" name="Shortened legislative procedure">
+
+    <operationRule operation="ForwardToVyberPoradcu" role="Administrator" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.Admin" state="Podatelna" targetState="VyberPoradcu" />
+    <operationRule operation="ForwardToVyberPoradcu" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="VyberPoradcu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToSekPredsedu" role="Administrator" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.Admin" state="VyberPoradcu" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="SekPredsedu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="VyberPoradcu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="VyberPoradcu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.LegislativeDepartmentDirector" state="VyberPoradcu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToICitanie" role="Administrator" state="SekPredsedu" targetState="ICitanie" />
+    <operationRule operation="ForwardToICitanie" role="Sslp.Admin" state="SekPredsedu" targetState="ICitanie" />
+    <operationRule operation="ForwardToICitanie" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="ICitanie" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="StopRemake" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="StopRemake" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToVybory" role="Administrator" state="ICitanie" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.Admin" state="ICitanie" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Vybor" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+    <operationRule operation="Stop" role="Administrator" state="ICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="ICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="ICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToGV" role="Administrator" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.Admin" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.CommitteeUser" state="Vybor" targetState="GestorskyVybor" />
+
+    <operationRule operation="HoldVybor" role="Administrator" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToIICitanie" role="Administrator" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.Admin" state="GestorskyVybor" targetState="IICitanie" />
+    <operationRule operation="ForwardToIICitanie" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="IICitanie" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToIIICitanie" role="Administrator" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.Admin" state="IICitanie" targetState="IIICitanie" />
+    <operationRule operation="ForwardToIIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IIICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="Hold" role="Administrator" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.Admin" state="IICitanie" targetState="IICitanie" />
+    <operationRule operation="Hold" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+    <operationRule operation="Stop" role="Administrator" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.Admin" state="IICitanie" targetState="Closed" />
+    <operationRule operation="Stop" role="Sslp.AdministrativeDepartmentWorker" state="IICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToRedakcia" role="Administrator" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.Admin" state="IIICitanie" targetState="Redakcia" />
+    <operationRule operation="ForwardToRedakcia" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Redakcia" />
+
+    <operationRule operation="BackToIICitanie" role="Administrator" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.Admin" state="IIICitanie" targetState="IICitanie" />
+    <operationRule operation="BackToIICitanie" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="IICitanie" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="IIICitanie" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="GestorskyVybor" />
+
+    <operationRule operation="BackVybory" role="Administrator" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.Admin" state="IIICitanie" targetState="Vybor" />
+    <operationRule operation="BackVybory" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Vybor" />
+
+    <operationRule operation="NotApproved" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="NotApproved" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="IIICitanie" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="IIICitanie" targetState="Closed" />
+
+
+    <operationRule operation="ForwardClosed" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+    <operationRule operation="ForwardClosed" role="NRESZ.Admin" state="Redakcia" targetState="Closed" />
+
+    <operationRule operation="BackPrezidentom" role="Administrator" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.Admin" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentDirector" state="Redakcia" targetState="Closed" />
+    <operationRule operation="BackPrezidentom" role="Sslp.LegislativeDepartmentReferee" state="Redakcia" targetState="Closed" />
+
+  </policy>
+
+
+  <!--Subpolicy: Report-->
+  <policy key="Report" name="Report / Information / Other type / Petition">
+
+    <operation key="ForwardToMeeting" name="Postúpiť na rokovanie NR SR" showInUI="true" imageUri="right_16x16" />
+    <operation key="ForwardReportClosed" name="Ukončiť proces" showInUI="true" imageUri="right_16x16" />
+
+
+    <operationRule operation="ForwardToSekPredsedu" role="Administrator" state="Podatelna" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.Admin" state="Podatelna" targetState="SekPredsedu" />
+    <operationRule operation="ForwardToSekPredsedu" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="SekPredsedu" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Podatelna" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.FilingRoomWorker" state="Podatelna" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToVybory" role="Administrator" state="SekPredsedu" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.Admin" state="SekPredsedu" targetState="Vybor" />
+    <operationRule operation="ForwardToVybory" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Vybor" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="SekPredsedu" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.ChairmanSecretaryWorker" state="SekPredsedu" targetState="Closed" />
+
+
+    <operationRule operation="ForwardToGV" role="Administrator" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.Admin" state="Vybor" targetState="GestorskyVybor" />
+    <operationRule operation="ForwardToGV" role="Sslp.CommitteeUser" state="Vybor" targetState="GestorskyVybor" />
+
+    <operationRule operation="HoldVybor" role="Administrator" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.Admin" state="Vybor" targetState="Vybor" />
+    <operationRule operation="HoldVybor" role="Sslp.CommitteeUser" state="Vybor" targetState="Vybor" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.CommitteeUser" state="Vybor" targetState="Closed" />
+
+    <operationRule operation="ForwardReportClosed" role="Administrator" state="Vybor" targetState="Closed" />
+    <operationRule operation="ForwardReportClosed" role="Sslp.Admin" state="Vybor" targetState="Closed" />
+    <operationRule operation="ForwardReportClosed" role="Sslp.SupervisionCommitteeUser" state="Vybor" targetState="Closed" />
+
+    
+    <operationRule operation="ForwardToMeeting" role="Administrator" state="GestorskyVybor" targetState="Meeting" />
+    <operationRule operation="ForwardToMeeting" role="Sslp.Admin" state="GestorskyVybor" targetState="Meeting" />
+    <operationRule operation="ForwardToMeeting" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Meeting" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+    <operationRule operation="TakeBack" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="TakeBack" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+    <operationRule operation="ForwardReportClosed" role="Administrator" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="ForwardReportClosed" role="Sslp.Admin" state="GestorskyVybor" targetState="Closed" />
+    <operationRule operation="ForwardReportClosed" role="Sslp.SupervisionCommitteeUser" state="GestorskyVybor" targetState="Closed" />
+
+
+    <operationRule operation="ForwardReportClosed" role="Administrator" state="Meeting" targetState="Closed" />
+    <operationRule operation="ForwardReportClosed" role="Sslp.Admin" state="Meeting" targetState="Closed" />
+    <operationRule operation="ForwardReportClosed" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Closed" />
+
+    <operationRule operation="BackToGV" role="Administrator" state="Meeting" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.Admin" state="Meeting" targetState="GestorskyVybor" />
+    <operationRule operation="BackToGV" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="GestorskyVybor" />
+
+    <operationRule operation="BackToNavrhovatel" role="Administrator" state="Meeting" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.Admin" state="Meeting" targetState="Closed" />
+    <operationRule operation="BackToNavrhovatel" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Closed" />
+
+    <operationRule operation="TakeBackBefore" role="Administrator" state="Meeting" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.Admin" state="Meeting" targetState="Closed" />
+    <operationRule operation="TakeBackBefore" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Closed" />
+
+    <operationRule operation="TakeBackAfter" role="Administrator" state="Meeting" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.Admin" state="Meeting" targetState="Closed" />
+    <operationRule operation="TakeBackAfter" role="Sslp.AdministrativeDepartmentWorker" state="Meeting" targetState="Closed" />
+
+  </policy>
+
+</policy>
