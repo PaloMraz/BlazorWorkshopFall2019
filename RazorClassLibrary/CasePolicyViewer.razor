@@ -1,0 +1,45 @@
+@using Bsp.Case
+
+
+<h2>CASE Policy Viewer</h2>
+
+@if (this.Policy == null)
+{
+  <div>(Policy not set)</div>
+  return;
+}
+
+<svg width="100%" height="100%" viewBox="0 0 800 600">
+  @{
+    float x = 50;
+    float y = 10;
+    float width = 700;
+    foreach (State state in this.Policy.States)
+    {
+      <g>
+        <text x="@x" y="@y">@state.Key @state.Name @state.Description</text>
+        <line x1="@x" y1="@y" x2="@(x + width)" y2="@y" stroke-width="2" stroke="#0000ff" />
+      </g>
+      y += 40;
+    }
+  }
+</svg>
+
+@code {
+
+  [Parameter]
+  public Policy Policy { get; set; } = CreateDefaultPolicy();
+
+  [Parameter]
+  public EventCallback<Policy> PolicyChanged { get; set; }
+
+
+  private static Policy CreateDefaultPolicy()
+  {
+    var policy = new Policy();
+    policy.Roles.Add("User");
+    policy.Roles.Add("Admin");
+    policy.States.AddRange(Enumerable.Range(0, 5).Select(i => new State($"State{i}")));
+    return policy;
+  }
+}
